@@ -1,0 +1,19 @@
+# API keys
+.env
+.env.*
+
+# Virtual environment
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# System files
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/
