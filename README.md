@@ -1,58 +1,63 @@
-# AI-Powered Used-Car Price Intelligence and Fair-Price Recommendation System
+# 🚗 AI-Powered Used-Car Price Intelligence and Fair-Price Recommendation System
 
-An AI-powered web application that helps users evaluate used-car deals by combining Machine Learning-based price prediction with AI-driven market analysis.
+An AI-powered web application that helps users make more informed used-car purchasing decisions through Machine Learning-based price prediction and AI-driven deal analysis.
 
-## Project Overview
+## 📌 Project Overview
 
-Buying a second-hand car can be challenging because buyers may not know whether the seller's asking price is reasonable.
+Buying a second-hand car can be challenging. Buyers often struggle to determine whether a seller's asking price is fair.
 
-This project aims to make that decision easier by predicting a car's estimated market value and generating an AI-powered analysis of the deal.
+This project addresses that problem by combining a trained Machine Learning model with real-time web search and Generative AI.
 
-Users enter the car's specifications and asking price. The application predicts an estimated price using a trained Machine Learning model, retrieves relevant web search results, and uses Google's Gemini AI to generate a buying recommendation.
+Users enter a vehicle's specifications and asking price. The system predicts an estimated price, retrieves relevant online market information using Tavily, and uses Google Gemini to generate an analysis and buying recommendation.
 
-## Key Features
+## ✨ Key Features
 
-* **Used-Car Price Prediction:** Predicts an estimated car price using a trained Random Forest model.
-* **Market Information Retrieval:** Uses Tavily Search API to retrieve relevant used-car market information.
-* **AI-Powered Deal Analysis:** Uses Google Gemini to analyse the predicted price, asking price and retrieved search results.
-* **Buying Recommendation:** Provides a recommendation to help users evaluate a deal.
-* **Price Comparison:** Displays the difference between the seller's asking price and the ML-predicted price.
-* **Interactive Dashboard:** Provides a user-friendly interface built with Streamlit.
+* **Used-Car Price Prediction:** Estimates vehicle prices using a trained Random Forest Regression model.
+* **Market Information Retrieval:** Retrieves relevant online used-car information through the Tavily Search API.
+* **AI-Powered Deal Analysis:** Uses Google Gemini to analyse the predicted price, seller's asking price, and retrieved search results.
+* **Buying Recommendation:** Generates an AI-assisted recommendation to help users evaluate a deal.
+* **Price Comparison:** Compares the seller's asking price with the Machine Learning prediction.
+* **Interactive Dashboard:** Provides an intuitive interface built with Streamlit.
 
-## Technologies Used
+## ⚙️ Technologies Used
 
-* Python
-* Machine Learning
-* Scikit-learn
-* Pandas and NumPy
-* Streamlit
-* Google Gemini API
-* Tavily Search API
-* Jupyter Notebook
+| Technology              | Purpose                             |
+| ----------------------- | ----------------------------------- |
+| Python                  | Core programming language           |
+| Pandas & NumPy          | Data processing and analysis        |
+| Scikit-learn            | Machine Learning model development  |
+| Random Forest Regressor | Used-car price prediction           |
+| Streamlit               | Interactive web application         |
+| Tavily Search API       | Online market information retrieval |
+| Google Gemini API       | AI-powered deal analysis            |
+| Jupyter Notebook        | Data exploration and analysis       |
 
-## System Workflow
+## 🔄 System Workflow
 
-1. User enters used-car details.
-2. The trained Machine Learning model predicts the estimated car price.
-3. Tavily Search retrieves relevant online market information.
-4. Google Gemini analyses the prediction, asking price and search results.
-5. The application displays the price comparison and AI-generated recommendation.
+1. **User Input:** Enter the car's name, specifications, and seller's asking price.
+2. **Data Processing:** Prepare the input features for the trained model.
+3. **Price Prediction:** Generate an estimated car price using the Random Forest model.
+4. **Market Search:** Retrieve relevant online information using Tavily.
+5. **AI Analysis:** Send the prediction, asking price, and search results to Google Gemini.
+6. **Recommendation:** Display the price comparison, deal analysis, and buying recommendation through the Streamlit dashboard.
 
-## Project Structure
+## 🏗️ Project Structure
 
 ```text
-AI_Used_Car_Price_Intelligence/
+AI-Powered-Used-Car-Price-Intelligence/
 │
 ├── app.py
 ├── requirements.txt
-├── .gitignore
 ├── README.md
+├── .gitignore
 │
 ├── data/
 │   ├── raw/
 │   └── processed/
 │
 ├── market_data/
+│   ├── tavily_search_results.csv
+│   └── used_car_listings.csv
 │
 ├── models/
 │   └── used_car_price_model.pkl
@@ -67,13 +72,13 @@ AI_Used_Car_Price_Intelligence/
     └── validate_market_data.py
 ```
 
-## Installation and Setup
+## 🖥️ Installation and Setup
 
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd AI_Used_Car_Price_Intelligence
+git clone https://github.com/sowmyavaddiparthy-gif/AI-Powered-Used-Car-Price-Intelligence.git
+cd AI-Powered-Used-Car-Price-Intelligence
 ```
 
 ### 2. Create a virtual environment
@@ -82,66 +87,82 @@ cd AI_Used_Car_Price_Intelligence
 python -m venv .venv
 ```
 
-Activate it on Windows:
+### 3. Activate the virtual environment
 
-```bash
-.venv\Scripts\activate
+**Windows PowerShell:**
+
+```powershell
+.venv\Scripts\Activate.ps1
 ```
 
-### 3. Install dependencies
+### 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure API keys
+### 5. Configure API keys
 
-Create a `.env` file in the project root directory and add:
+Create a `.env` file in the project root directory and add your own API keys:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
 TAVILY_API_KEY=your_tavily_api_key
 ```
 
-Replace the placeholders with your own API keys.
+Replace the placeholders with your actual API keys.
 
-**Never upload your `.env` file or share your API keys publicly.**
+**Important:** Never upload your `.env` file or expose your API keys publicly.
 
-### 5. Run the application
+### 6. Run the application
 
 ```bash
 python -m streamlit run app.py
 ```
 
-The application will open in your browser.
+The application will open in your default web browser.
 
-## Machine Learning Model
+## 🤖 Machine Learning Model
 
-The project uses a trained Random Forest Regression model to estimate used-car prices based on vehicle specifications such as:
+The project uses a trained Random Forest Regression model to estimate used-car prices.
+
+The model considers the following vehicle features:
 
 * Manufacturing year
 * Kilometres driven
 * Fuel type
 * Seller type
 * Transmission
-* Ownership history
+* Previous ownership
 * Mileage
 * Engine capacity
 * Maximum power
 * Number of seats
 
-## Future Enhancements
+The trained model is stored in the `models/` directory.
 
-* Improve market-data collection using reliable individual vehicle listings.
-* Expand the dataset with more vehicle brands and models.
-* Improve prediction accuracy with additional data and model experimentation.
-* Add more advanced vehicle comparison features.
+## 🔮 Future Enhancements
+
+* Improve the collection of individual used-car listings from reliable sources.
+* Expand the training dataset with additional vehicle models and brands.
+* Experiment with other Machine Learning algorithms.
+* Introduce vehicle comparison functionality.
 * Deploy the application online.
 
-## Disclaimer
+## ⚠️ Disclaimer
 
-The predicted price is an estimate based on historical training data. Online search results provide additional market context and may not represent verified, currently available individual listings. Users should independently inspect a vehicle and verify its condition and documents before purchasing.
+The predicted car price is an estimate based on historical training data and is not a guaranteed market value. Online search results provide additional market context and may not represent verified, currently available individual listings.
+
+Users should independently verify vehicle details, condition, ownership documents, and service history before making a purchase.
+
+## 👩‍💻 Project Information
+
+**Project:** AI-Powered Used-Car Price Intelligence and Fair-Price Recommendation System
+
+**Domain:** Machine Learning | Artificial Intelligence | Web Development
+
+**Developed using:** Python, Streamlit, Scikit-learn, Tavily API, and Google Gemini API.
 
 ---
 
-**Developed as a Machine Learning and AI-based academic project.**
+*Built to explore how Machine Learning and Generative AI can support smarter real-world purchasing decisions.*
