@@ -7,6 +7,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from tavily import TavilyClient
 from google import genai
+import streamlit as st
 
 # Locate the project folder and load API keys
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -25,18 +26,16 @@ if not MODEL_PATH.exists():
 model = joblib.load(MODEL_PATH)
 
 # Initialize APIs
-tavily_key = os.getenv("TAVILY_API_KEY")
-gemini_key = os.getenv("GEMINI_API_KEY")
+import streamlit as st
+
+tavily_key = os.getenv("TAVILY_API_KEY") or st.secrets.get("TAVILY_API_KEY")
+gemini_key = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
 
 if not tavily_key or not gemini_key:
-    raise ValueError(
-        "Check that TAVILY_API_KEY and GEMINI_API_KEY "
-        "are present in the project's .env file."
-    )
+    raise ValueError("API keys are missing.")
 
 tavily = TavilyClient(api_key=tavily_key)
 gemini = genai.Client(api_key=gemini_key)
-
 def get_car_details():
     print("\n=== USED-CAR PRICE INTELLIGENCE ===")
     print("Enter the car details below.\n")
